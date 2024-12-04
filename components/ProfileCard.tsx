@@ -59,7 +59,7 @@ const ProfileCard = ({ person }: { person: any }) => {
             <CardContent>
                 <div className="flex items-center justify-between border-2 border-gray-500 p-2 rounded w-full">
                     <Typography level="title-sm" sx={{ color: 'white' }}>
-                        Date of Death
+                    입관
                     </Typography>
                     <Typography level="body-sm" sx={{ color: 'white' }}>
                         {person.dateOfDeath}
@@ -67,7 +67,7 @@ const ProfileCard = ({ person }: { person: any }) => {
                 </div>
                 <div className="flex items-center justify-between border-2 border-gray-500 p-2 rounded w-full">
                     <Typography level="title-sm" sx={{ color: 'white' }}>
-                        Room
+                    발인
                     </Typography>
                     <Typography level="body-sm" sx={{ color: 'white' }}>
                         {person.room}
@@ -75,7 +75,7 @@ const ProfileCard = ({ person }: { person: any }) => {
                 </div>
                 <div className="flex justify-between items-center border-2 border-gray-500 p-2 rounded w-full">
                     <Typography level="title-sm" sx={{ color: 'white' }}>
-                        Location
+                    장지
                     </Typography>
                     <Typography level="body-sm" sx={{ color: 'white' }}>
                         {person.location}
