@@ -1,16 +1,16 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import ProfileCard from "../components/ProfileCard";
-import profile from '@/public/profile.svg';
+import profile from "@/public/profile.svg";
 
 interface Person {
-    floor: string;
-    name: string;
-    relation: string;
-    dateOfDeath: string;
-    room: string;
-    location: string;
-  }
+  floor: string;
+  name: string;
+  relation: string;
+  dateOfDeath: string;
+  room: string;
+  location: string;
+}
 
 export default function Home() {
   const [data, setData] = useState<Person[]>([]);
@@ -44,15 +44,15 @@ export default function Home() {
         location: "Incheon Funeral Hall",
         image: profile,
       },
-      {
-        floor: "4th Floor",
-        name: "Lee Hwa-Young",
-        relation: "Mother of Choi Woo-Jin and Hwang Ji-Young",
-        dateOfDeath: "2024-12-02",
-        room: "Room 402, Busan Memorial Park",
-        location: "Busan National Cemetery",
-        image: profile,
-      },
+      // {
+      //   floor: "4th Floor",
+      //   name: "Lee Hwa-Young",
+      //   relation: "Mother of Choi Woo-Jin and Hwang Ji-Young",
+      //   dateOfDeath: "2024-12-02",
+      //   room: "Room 402, Busan Memorial Park",
+      //   location: "Busan National Cemetery",
+      //   image: profile,
+      // },
     ];
 
     setData(dummyData);
@@ -60,11 +60,27 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center bg-black min-h-screen py-10 w-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 px-6 lg:px-12 ">
-      {data.map((person, index) => (
-        <ProfileCard key={index} person={person} />
-      ))}
-      </div>
+      {data.length === 1 ? (
+        <div className="w-full h-full px-6 lg:px-12">
+          {data.map((person, index) => (
+            <ProfileCard key={index} person={person} />
+          ))}
+        </div>
+      ) : data.length === 2 ? (
+        <div
+          className={`w-full grid grid-cols-1 md:grid-cols-2 md:gap-5 gap-10 px-6 lg:px-12 `}
+        >
+          {data.map((person, index) => (
+            <ProfileCard key={index} person={person} />
+          ))}
+        </div>
+      ) : (<div
+        className={`w-full grid grid-cols-1 md:grid-cols-2 md:gap-5 gap-10 px-6 lg:px-12 `}
+      >
+        {data.map((person, index) => (
+          <ProfileCard key={index} person={person} />
+        ))}
+      </div>)}
     </div>
   );
-};
+}

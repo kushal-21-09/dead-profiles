@@ -12,12 +12,13 @@ const ProfileCard = ({ person }: { person: any }) => {
         <Card
             variant="outlined"
             sx={{
-                width: '100%',
-                maxWidth: 500,
-                minHeight: 300,
+                width: '100%',  // Ensure card takes full width of the container
+                height: '100%', // Ensure card takes full height of the container
                 backgroundColor: 'black',
                 color: 'white',
                 borderRadius: 4,
+                display: 'flex',
+                flexDirection: 'column',  // Stack child elements vertically
             }}
         >
             <div className="flex justify-between items-center px-4 py-2 border-b border-gray-700">
@@ -44,19 +45,20 @@ const ProfileCard = ({ person }: { person: any }) => {
                     alignItems: 'center',
                     gap: 2,
                     paddingInlineStart: '16px',
+                    flexGrow: 1, // Make Box grow to fill available space
                 }}
             >
                 <Avatar src={person.image} size="lg" />
                 <div className="border-2 border-gray-500 p-2 rounded w-full">
                     <Typography
                         level="body-md"
-                        sx={{ color: 'white', fontWeight: 600, }}
+                        sx={{ color: 'white', fontWeight: 600 }}
                     >
                         {person.relation}
                     </Typography>
                 </div>
             </Box>
-            <CardContent>
+            <CardContent sx={{ paddingTop: 2, paddingBottom: 0 }}>
                 <div className="flex items-center justify-between border-2 border-gray-500 p-2 rounded w-full">
                     <Typography level="title-sm" sx={{ color: 'white' }}>
                     입관
