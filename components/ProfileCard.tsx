@@ -1,84 +1,141 @@
 import { Avatar, Box, Card, CardContent, Typography } from "@mui/joy";
 import Image from "next/image";
-import plus from '@/public/plusIcon.svg';
+import dummyImage from '@/public/plusIcon.svg';
 
-const ProfileCard = ({ person }: { person: any }) => {
+const ProfileCard = ({ person, dataLength }: { person: any; dataLength: number }) => {
+  // Dynamic styles based on the length of the data
+  const getCardStyle = () => {
+    const baseStyle = {
+      width: "100%",
+      backgroundColor: "#1E1E1E",
+      color: "white",
+      borderRadius: "8px",
+      display: "flex",
+      flexDirection: "column",
+      padding: "16px",
+      border: "1px solid #333",
+    };
+
+    if (dataLength === 1) {
+      return { ...baseStyle, maxWidth: "600px", margin: "0 auto" }; // Center single card
+    } else if (dataLength === 2) {
+      return { ...baseStyle, maxWidth: "500px", margin: "0 auto"  }; // Adjust size for two cards
+    } else {
+      return baseStyle; // Default style for three or more cards
+    }
+  };
+
+  const getAvatarSize = () => {
+    if (dataLength === 1) {
+      return "150px"; // Larger avatar for single card
+    } else if (dataLength === 2) {
+      return "120px"; // Medium avatar for two cards
+    } else {
+      return "100px"; // Smaller avatar for three or more cards
+    }
+  };
+
   return (
-    <Card
-      variant="outlined"
-      sx={{
-        width: '100%',
-        height: '100%',
-        backgroundColor: 'black',
-        color: 'white',
-        borderRadius: 4,
-        display: 'flex',
-        flexDirection: 'column',
-      }}
-    >
-      <div className="flex justify-between items-center px-4 py-2 border-b border-gray-700">
+    <Card sx={getCardStyle()}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: "16px",
+        }}
+      >
         <Typography
-          level="title-sm"
-          sx={{ fontWeight: 600, color: 'white', fontSize: { xs: '0.9rem', md: '1rem' } }}
+          sx={{ fontWeight: "bold", fontSize: "1.2rem", color: "#FFFFFF" }}
         >
           {person.floor}
         </Typography>
         <Typography
-          level="title-md"
-          sx={{ fontWeight: 700, color: 'white', fontSize: { xs: '1rem', md: '1.25rem' } }}
+          sx={{ fontWeight: "bold", fontSize: "1.5rem", color: "#FFFFFF" }}
         >
           {person.name}
         </Typography>
-        <div className="bg-white px-2 py-1 rounded-full flex items-center justify-center">
-          <Image src={plus} alt="icon" height={20} width={12}></Image>
-        </div>
-      </div>
+        <Image src={dummyImage} alt="icon" height={24} width={24} />
+      </Box>
+
       <Box
         sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          gap: 2,
-          paddingInlineStart: '16px',
-          flexGrow: 1,
-          paddingBottom: { xs: '10px', md: '20px' }, // Adjust padding based on screen size
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          gap: "16px",
+          marginBottom: "16px",
         }}
       >
-        <Avatar src={person.image} size="lg" />
-        <div className="border-2 border-gray-500 p-2 rounded w-full">
-          <Typography
-            level="body-md"
-            sx={{ color: 'white', fontWeight: 600, fontSize: { xs: '0.9rem', md: '1rem' } }}
-          >
-            {person.relation}
-          </Typography>
-        </div>
+        <Avatar
+          src={person.image || dummyImage}
+          sx={{
+            width: getAvatarSize(),
+            height: getAvatarSize(),
+            borderRadius: "50%",
+            border: "2px solid #FFFFFF",
+          }}
+        />
+        <Typography
+          sx={{
+            color: "#FFFFFF",
+            fontWeight: "bold",
+            fontSize: "1rem",
+            textAlign: "center",
+          }}
+        >
+          {person.relation}
+        </Typography>
       </Box>
-      <CardContent sx={{ paddingTop: 2, paddingBottom: 0 }}>
-        <div className="flex items-center justify-between border-2 border-gray-500 p-2 rounded w-full">
-          <Typography level="title-sm" sx={{ color: 'white', fontSize: { xs: '0.8rem', md: '1rem' } }}>
-            입관
-          </Typography>
-          <Typography level="body-sm" sx={{ color: 'white', fontSize: { xs: '0.8rem', md: '1rem' } }}>
-            {person.dateOfDeath}
-          </Typography>
-        </div>
-        <div className="flex items-center justify-between border-2 border-gray-500 p-2 rounded w-full">
-          <Typography level="title-sm" sx={{ color: 'white', fontSize: { xs: '0.8rem', md: '1rem' } }}>
-            발인
-          </Typography>
-          <Typography level="body-sm" sx={{ color: 'white', fontSize: { xs: '0.8rem', md: '1rem' } }}>
-            {person.room}
-          </Typography>
-        </div>
-        <div className="flex justify-between items-center border-2 border-gray-500 p-2 rounded w-full">
-          <Typography level="title-sm" sx={{ color: 'white', fontSize: { xs: '0.8rem', md: '1rem' } }}>
-            장지
-          </Typography>
-          <Typography level="body-sm" sx={{ color: 'white', fontSize: { xs: '0.8rem', md: '1rem' } }}>
-            {person.location}
-          </Typography>
-        </div>
+
+      <CardContent
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "8px",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            padding: "8px 12px",
+            border: "1px solid #555",
+            borderRadius: "4px",
+            backgroundColor: "#2A2A2A",
+          }}
+        >
+          <Typography>입관</Typography>
+          <Typography>{person.dateOfDeath}</Typography>
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            padding: "8px 12px",
+            border: "1px solid #555",
+            borderRadius: "4px",
+            backgroundColor: "#2A2A2A",
+          }}
+        >
+          <Typography>발인</Typography>
+          <Typography>{person.room}</Typography>
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            padding: "8px 12px",
+            border: "1px solid #555",
+            borderRadius: "4px",
+            backgroundColor: "#2A2A2A",
+          }}
+        >
+          <Typography>장지</Typography>
+          <Typography>{person.location}</Typography>
+        </Box>
       </CardContent>
     </Card>
   );
