@@ -21,17 +21,17 @@ const ProfileCard = ({ person, dataLength }: { person: any; dataLength: number }
     } else if (dataLength === 2) {
       return { ...baseStyle, width: "100%", height:"100%", margin: "0 auto"  };
     } else {
-      return baseStyle; // Default style for three or more cards
+      return baseStyle; 
     }
   };
 
   const getAvatarSize = () => {
     if (dataLength === 1) {
-      return "150px"; // Larger avatar for single card
+      return "150px";
     } else if (dataLength === 2) {
-      return "120px"; // Medium avatar for two cards
+      return "120px"; 
     } else {
-      return "100px"; // Smaller avatar for three or more cards
+      return "100px";
     }
   };
 
