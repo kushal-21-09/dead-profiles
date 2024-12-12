@@ -17,9 +17,9 @@ const ProfileCard = ({ person, dataLength }: { person: any; dataLength: number }
     };
 
     if (dataLength === 1) {
-      return { ...baseStyle, maxWidth: "600px", margin: "0 auto" }; // Center single card
+      return { ...baseStyle, maxWidth: "600px", margin: "0 auto" }; 
     } else if (dataLength === 2) {
-      return { ...baseStyle, maxWidth: "500px", margin: "0 auto"  }; // Adjust size for two cards
+      return { ...baseStyle, width: "100%", height:"100%", margin: "0 auto"  };
     } else {
       return baseStyle; // Default style for three or more cards
     }
