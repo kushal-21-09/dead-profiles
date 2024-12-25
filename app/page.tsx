@@ -37,6 +37,24 @@ export default function Home() {
         location: "Hanrim Hospital Funeral Hall",
         image: profile,
       },
+      {
+        floor: "3rd Floor",
+        name: "Cho Yeon-Hee",
+        relation: "Daughter of Han Byung-Soon and Kang Mi-Hye",
+        dateOfDeath: "2024-12-01",
+        room: "Room 302, Daegu Memorial Park",
+        location: "Hanrim Hospital Funeral Hall",
+        image: profile,
+      },
+      {
+        floor: "3rd Floor",
+        name: "Cho Yeon-Hee",
+        relation: "Daughter of Han Byung-Soon and Kang Mi-Hye",
+        dateOfDeath: "2024-12-01",
+        room: "Room 302, Daegu Memorial Park",
+        location: "Hanrim Hospital Funeral Hall",
+        image: profile,
+      },
     ];
 
     setData(dummyData);
@@ -51,7 +69,7 @@ export default function Home() {
   };
 
   return data?.length === 1 ? (
-    <div className="flex flex-col items-center bg-black min-h-screen py-10 w-full">
+    <div className="flex flex-col items-center bg-black min-h-screen xl:py-10 w-full">
       <div className={`w-full h-full px-6 lg:px-12`}>
         {data.map((person: Person, index: Key | null | undefined) => (
           <ProfileCard key={index} person={person} dataLength={data.length} />
