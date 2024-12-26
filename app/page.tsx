@@ -1,6 +1,6 @@
 "use client";
 import ProfileCard from "@/components/ProfileCard";
-import profile from "@/public/profile.svg";
+import profile from "@/public/icons/profile.svg";
 import { Key, useEffect, useState } from "react";
 
 // Define the shape of your person object
@@ -37,24 +37,24 @@ export default function Home() {
         location: "Hanrim Hospital Funeral Hall",
         image: profile,
       },
-      {
-        floor: "3rd Floor",
-        name: "Cho Yeon-Hee",
-        relation: "Daughter of Han Byung-Soon and Kang Mi-Hye",
-        dateOfDeath: "2024-12-01",
-        room: "Room 302, Daegu Memorial Park",
-        location: "Hanrim Hospital Funeral Hall",
-        image: profile,
-      },
-      {
-        floor: "3rd Floor",
-        name: "Cho Yeon-Hee",
-        relation: "Daughter of Han Byung-Soon and Kang Mi-Hye",
-        dateOfDeath: "2024-12-01",
-        room: "Room 302, Daegu Memorial Park",
-        location: "Hanrim Hospital Funeral Hall",
-        image: profile,
-      },
+      // {
+      //   floor: "3rd Floor",
+      //   name: "Cho Yeon-Hee",
+      //   relation: "Daughter of Han Byung-Soon and Kang Mi-Hye",
+      //   dateOfDeath: "2024-12-01",
+      //   room: "Room 302, Daegu Memorial Park",
+      //   location: "Hanrim Hospital Funeral Hall",
+      //   image: profile,
+      // },
+      // {
+      //   floor: "3rd Floor",
+      //   name: "Cho Yeon-Hee",
+      //   relation: "Daughter of Han Byung-Soon and Kang Mi-Hye",
+      //   dateOfDeath: "2024-12-01",
+      //   room: "Room 302, Daegu Memorial Park",
+      //   location: "Hanrim Hospital Funeral Hall",
+      //   image: profile,
+      // },
     ];
 
     setData(dummyData);
@@ -69,15 +69,15 @@ export default function Home() {
   };
 
   return data?.length === 1 ? (
-    <div className="flex flex-col items-center bg-black min-h-screen xl:py-10 w-full">
-      <div className={`w-full h-full px-6 lg:px-12`}>
+    <div className="flex flex-col items-center bg-customGray h-screen xl:py-10 w-full">
+      <div className={`w-full`}>
         {data.map((person: Person, index: Key | null | undefined) => (
           <ProfileCard key={index} person={person} dataLength={data.length} />
         ))}
       </div>
     </div>
   ) : (
-    <div className="flex flex-col items-center bg-black min-h-screen py-10 w-full">
+    <div className="flex flex-col items-center bg-customBlack min-h-screen py-10 w-full">
       <div className={`${getCardLayout()} px-6 lg:px-12`}>
         {data.map((person: Person, index: Key | null | undefined) => (
           <ProfileCard key={index} person={person} dataLength={data.length} />

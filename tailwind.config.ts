@@ -8,9 +8,13 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        pretendard: ['Pretendard Variable', 'sans-serif'],
+      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        customBorder: '#4A4A4A',
+        customGray: '#171716',
+        customBlack: '#212020',
       },
     },
   },
